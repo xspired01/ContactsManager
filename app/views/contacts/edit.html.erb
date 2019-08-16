@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2"> </div>
+        <div class="col-md-8 text-center">
+          <h1 >Edit Contact</h1>
+            <div class="justify-content-center">
+              <h2 class="text-center"><%= @contact.first_name %><%=' '%><%= @contact.last_name %></h2>
+              <%= render "form", contact: @contact %>
+              <br>
+              
+            </div>
+            <a href="<%= contacts_url%>" class="btn btn-primary">Back to Contacts</a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

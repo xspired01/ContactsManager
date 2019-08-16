@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row justify-content-center">
+            <div class="col-lg-4 border">
+                    <div class="card " style="width: 30rem;">
+                        <div class="m-4">
+                            <%= image_tag("man-user.svg", style: "height: 20rem; width: 20rem;", class: "center-item" ) %>
+                        </div>
+                        <div class="card-body"> 
+                            <h3 class="card-title"><%= @contact.first_name  %><%=" " %><%= @contact.last_name %> </h3>
+                            <ul class="inline list-group list-group-flush">
+                                <li class="list-group-item"><strong>Email: </strong><%= @contact.email %></li>
+                                <li class="list-group-item"><strong>Phone: </strong><%= @contact.phone %></li>
+                                <li class="list-group-item"><strong>Company: </strong><%= @contact.company %></li>
+                                <li class="list-group-item"><strong>Birth Date: </strong><%= @contact.birth_date %></li>
+                                <li class="list-group-item"><strong>Gender: </strong><%= @contact.sex %></li>
+                                <li class="list-group-item"><strong>Notes: </strong><%= @contact.notes %></li>
+                            </ul>
+                            <a href="<%= edit_contact_url(@contact) %>" class="btn btn-primary p-2 m-2">Edit <%= @contact.first_name %></a>
+                            <a href="<%= contacts_url%>" class="btn btn-success p-2 m-2">Back to Contacts</a>
+                            
+                        </div>
+                        
+                    </div>
+            </div>
+    </div>
+</div>

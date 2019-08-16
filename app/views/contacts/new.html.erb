@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Create a New Contact</h1>
+            </div>
+            <%= render 'shared/errors' %>
+            <%= render "form", contact: @contact %>
+        </div>
+        <div class="col text-center">
+        <form action="<%= contacts_url %>" method="get">
+            <input type="submit" value="Back to Contacts" class="btn btn-primary"> 
+        </form>
+        </div>
+    </div>
+</div>
+
+
+

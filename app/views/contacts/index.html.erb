@@ -1,0 +1,42 @@
+
+<div class="container text-center">
+    <div class="row justify-content-center" >
+        <div class="col border"></div>
+        <div class="col">
+            <h1>All Contacts</h1>
+            <div class="row">
+                <div class="col">
+                    <form action="<%= new_contact_url %>" method="get" class=" inline m-2 p-2">
+                            <input type="submit" value="New Contact" class="btn btn-primary">
+                    </form>
+                </div>
+            
+           </div>
+            <ul class="my_uls">
+                <% @sorted_contacts.each do |contact| %>
+                <li class="card" style="width: 37rem;" >
+                     <div class="card-body"> 
+                     <h3>
+                        <a href ="/contacts/<%= contact.id %>" class="card-title" ><%= contact.first_name %><%=" "%><%= contact.last_name %></a>
+                    </h3>    
+                        <div class="card-body"> 
+                            
+                            <a href="<%= edit_contact_url(contact.id) %>" class="btn btn-warning inline" >Edit Contact</a> 
+                                <form action="<%= contact_url(contact) %>" method="post" class="m-2 p-2" >
+                                    <input
+                                        type="hidden"
+                                        name="authenticity_token"
+                                        value="<%= form_authenticity_token %>">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="submit" value="Delete Contact" class="btn btn-danger ">
+                                </form>
+                            
+                        </div>
+                    </div>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+        <div class="col border"></div>
+    </div>
+</div>

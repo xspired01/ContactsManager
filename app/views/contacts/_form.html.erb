@@ -1,0 +1,89 @@
+<!-- _form is a partial template in erb. Partials always start with an underscore -->
+
+<% action_url = contact.persisted? ? contact_url(contact) : contacts_url %>
+<% form_method = contact.persisted? ? "patch" : "post" %>
+<% submit_text = contact.persisted? ? "Update Contact" : "Create Contact" %>
+
+<!--  3 variables that are the only difference between create and edit 
+action_url, form_method, and submit_text. 
+Every model in rails has a persisted method. Persisted checks if element has
+been saved to database before. If not saved to database, will save it
+-->
+
+<form action="<%= action_url %>" method="post">
+<div class="form-group">
+    <input type="hidden" name="_method" value="<%= form_method %>">
+    <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+    <div class="form-row"> 
+         <div class="form-group col-sm-5 col-md-5" >
+            <label for="contact_first_name" >First Name</label>
+            <input type="text" name="contact[first_name]" id="contact_first_name" value="<%= contact.first_name %>" 
+            class="form-control">
+            <small class="form-text text-muted">First Name is required</small>
+        </div>
+        <div class="form-group col-sm-5 col-md-5">
+            <label for="contact_last_name" >Last Name</label>
+            <input type="text" name="contact[last_name]" id="contact_last_name" value="<%= contact.last_name %>" 
+            class="form-control">
+        </div>
+        <div class="form-group col-md-10 col-lg-10" > 
+            <label for="contact_email">Email</label>
+            <input type="text" name="contact[email]" id="contact_email" value="<%= contact.email %>"
+            class="form-control">
+            
+        </div>
+       <div class="form-group col-md-10 col-lg-10">
+            <label for="contact_phone">Phone</label>
+            <input type="text" name="contact[phone]" id="contact_phone" value="<%= contact.phone %>"
+            class="form-control">
+        </div>
+        <div class="form-group col-md-10 col-lg-10">  
+            <label for="contact_title">Title</label>
+            <input type="text" name="contact[title]" id="contact_title" value="<%= contact.title %>"
+            class="form-control">
+        </div>
+        <div class="form-group col-md-10 col-lg-6">
+            <label for="contact_company">Company</label>
+            <input type="text" name="contact[company]" id="contact_company" value="<%= contact.company %>"
+            class="form-control">
+        </div>
+       
+        <div class="form-group col-xs-4">  
+            <label for="contact_sex">Gender</label>
+            <select type="text" name="contact[sex]" id="contact_sex" value="<%= contact.sex %>"
+            class="form-control">
+                <option value="F"
+                    <%= "selected" if @contact.sex == "F" %>>
+                    F
+                </option>
+                <option value="M"
+                    <% if @contact.sex == "M" %>
+                        selected
+                    <% end %>>
+                    M
+                </option>
+                <option value="O" <% if @contact.sex == "O" %>
+                        selected <% end %>>
+                    O
+                </option>
+            </select>
+        </div>
+         <div class="form-group col-md-3 col-lg-3">
+            <label for="contact_birth_date">Birth Date</label>
+            <input type="text" name="contact[birth_date]" id="contact_birth_date" value="<%= contact.birth_date %>"
+            class="form-control">
+        </div>
+        <div class="form-group col-sm-8 col-md-11 col-lg-9">  
+            <label for="contact_notes">Notes</label>
+            <textarea name="contact[notes]" id="contact_notes" rows="7" cols="40" class="form-control"><%= contact.notes %></textarea>
+        </div>
+     </div>
+     <div class="text-center">
+    <input type="submit" class="btn btn-success" value="<%= submit_text %>" >
+    </div>
+</form>
+
+
